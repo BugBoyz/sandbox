@@ -1,1 +1,2 @@
 # sandbox
+Study django project
