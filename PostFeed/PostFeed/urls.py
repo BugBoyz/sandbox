@@ -20,6 +20,6 @@ from PostFeed import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('main', views.MainPage)
+    path('', views.MainPage)
     #re_path(r'^main', views.)
 ]

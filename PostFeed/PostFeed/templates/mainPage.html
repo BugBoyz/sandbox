@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+test
+{% for post in context %}
+    <p>Статья: {{post.name}}</p>
+    <p>Авторы: {{post.author}}</p>
+    <p>{{post.text}}</p>
+    <p>Дата {{post.date}}</p>
+    <p>Теги: {{post.tags}}</p>
+{% endfor %}
+</body>
+</html>
+</body>
+</html>
