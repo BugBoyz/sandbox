@@ -19,7 +19,8 @@ from django.urls import path, re_path
 from PostFeed import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('addPost/', views.AddPost),
+    path('addPost/addPostLogic', views.AddPostLogic),
     path('', views.MainPage)
     #re_path(r'^main', views.)
 ]

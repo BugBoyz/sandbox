@@ -22,8 +22,8 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/untitled1" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -47,7 +47,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601562096145</updated>
-      <workItem from="1601562135512" duration="699000" />
+      <workItem from="1601562135512" duration="7095000" />
+      <workItem from="1601628972781" duration="2796000" />
     </task>
     <servers />
   </component>
@@ -59,7 +60,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

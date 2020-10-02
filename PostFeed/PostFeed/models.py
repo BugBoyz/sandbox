@@ -7,3 +7,8 @@ class Post(models.Model):
     author = models.CharField(max_length=25)
     date = models.DateField()
     tags = models.CharField(max_length=30)
+"""
+pep8 
+
+DRF - django rest framework
+"""
