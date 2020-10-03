@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from PostFeed.models import Post
 from django.views.decorators.csrf import csrf_exempt
 import datetime
+from .forms import PostForm
+
 
 def MainPage(request):
     data = Post.objects.all()
@@ -9,17 +11,18 @@ def MainPage(request):
 
 
 def AddPost(request):
-    return render(request, "addPost.html")
+    if request.method == 'GET':
+        form = PostForm()
+        return render(request, "addPost.html", {"form": form})
 
+    elif request.method == 'POST':
+        Post.objects.create(
+            name=request.POST['name'],
+            author=request.POST['author'],
+            text=request.POST['text'],
+            tags=request.POST['tags'],
+            date=datetime.datetime.now()
+        )
 
-@csrf_exempt
-def AddPostLogic(request):
-    Post.objects.create(
-        name=request.POST['name'],
-        author=request.POST['author'],
-        text=request.POST['text'],
-        tags=request.POST['tags'],
-        date=datetime.datetime.now()
-    )
+        return redirect('/../')
 
-    return redirect('/../')

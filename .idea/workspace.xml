@@ -12,6 +12,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -48,7 +49,8 @@
       <option name="presentableId" value="Default" />
       <updated>1601562096145</updated>
       <workItem from="1601562135512" duration="7095000" />
-      <workItem from="1601628972781" duration="2796000" />
+      <workItem from="1601628972781" duration="3115000" />
+      <workItem from="1601715720298" duration="2827000" />
     </task>
     <servers />
   </component>

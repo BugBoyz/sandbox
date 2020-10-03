@@ -20,7 +20,6 @@ from PostFeed import views
 
 urlpatterns = [
     path('addPost/', views.AddPost),
-    path('addPost/addPostLogic', views.AddPostLogic),
     path('', views.MainPage)
     #re_path(r'^main', views.)
 ]
