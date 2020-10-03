@@ -20,6 +20,7 @@ from PostFeed import views
 
 urlpatterns = [
     path('addPost/', views.AddPost),
-    path('', views.MainPage)
+    path('', views.MainPage),
+    path('deletePost/<int:postID>', views.DeletePost)
     #re_path(r'^main', views.)
 ]

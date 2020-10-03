@@ -15,12 +15,14 @@
 test
 {% for post in context %}
     <p>Статья: {{post.name}}</p>
-    <p>Авторы: {{post.author}}</p>
+    <p>Автор: {{post.author}}</p>
     <p>{{post.text}}</p>
     <p>Дата {{post.date}}</p>
     <p>Теги: {{post.tags}}</p>
+    <a href="deletePost/{{ post.id }}">Удалить</a>
 {% endfor %}
-
+<br>
+<br>
 <a href="addPost">Добавить пост</a>
 </body>
 </html>

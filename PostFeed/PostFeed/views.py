@@ -26,3 +26,8 @@ def AddPost(request):
 
         return redirect('/../')
 
+
+def DeletePost(request, postID):
+    Post.objects.get(id=postID).delete()
+
+    return redirect('/../')
