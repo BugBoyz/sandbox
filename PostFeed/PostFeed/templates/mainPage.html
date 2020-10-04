@@ -12,14 +12,12 @@
     <title>Title</title>
 </head>
 <body>
-test
 {% for post in context %}
-    <p>Статья: {{post.name}}</p>
+    <a href="Post/{{ post.id }}">{{ post.name }}</a> <br>
     <p>Автор: {{post.author}}</p>
-    <p>{{post.text}}</p>
     <p>Дата {{post.date}}</p>
     <p>Теги: {{post.tags}}</p>
-    <a href="deletePost/{{ post.id }}">Удалить</a>
+    <a href="deletePost/{{ post.id }}">Удалить</a><hr>
 {% endfor %}
 <br>
 <br>

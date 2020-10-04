@@ -31,3 +31,9 @@ def DeletePost(request, postID):
     Post.objects.get(id=postID).delete()
 
     return redirect('/../')
+
+
+def ShowPost(request, postID):
+    post = Post.objects.get(id=postID)
+
+    return render(request, "ShowPost.html", {"post":post})
