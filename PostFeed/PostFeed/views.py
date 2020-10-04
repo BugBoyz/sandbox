@@ -9,17 +9,27 @@ from .forms import PostForm, AuthForm
 def MainPage(request):
     data = Post.objects.all()
 
-    if(request.session['authorized'] == True):
-        return render(request, "mainPage.html",
-                      {"context": data,
-                       'authorized': True,
-                       'username': request.session['username']})
-    else:
+    try:
+
+        if request.session['authorized'] == True:
+            return render(request, "mainPage.html",
+                        {"context": data,
+                        'authorized': True,
+                        'username': request.session['username']})
+
+        else:
+            return render(request, "mainPage.html",
+                        {'context': data,
+                        'authorized': False})
+
+    except:
         return render(request, "mainPage.html",
                       {'context': data,
                        'authorized': False})
 
+
 def AddPost(request):
+
     if request.session['authorized'] == True:
         if request.method == 'GET':
             form = PostForm()
