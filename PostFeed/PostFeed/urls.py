@@ -22,6 +22,8 @@ urlpatterns = [
     path('addPost/', views.AddPost),
     path('', views.MainPage),
     path('deletePost/<int:postID>', views.DeletePost),
-    path('Post/<int:postID>', views.ShowPost)
+    path('Post/<int:postID>', views.ShowPost),
+    path('authorize/', views.Authorize),
+    path('signOut', views.SignOut)
     #re_path(r'^main', views.)
 ]

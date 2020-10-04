@@ -7,6 +7,13 @@ class Post(models.Model):
     author = models.CharField(max_length=25)
     date = models.DateField()
     tags = models.CharField(max_length=30)
+
+
+class User(models.Model):
+    username = models.CharField(max_length=15)
+    password = models.CharField(max_length=15)
+
+
 """
 pep8 
 

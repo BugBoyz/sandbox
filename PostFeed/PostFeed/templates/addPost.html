@@ -5,14 +5,15 @@
     <title>Добавить пост</title>
 </head>
 <body>
+
 <form method="POST">
     {% csrf_token %}
 <table>
     {{ form }}
 </table>
-
-
 <input type="submit" value="Подтвердить">
+    <br> <br>
+    <a href="/../">Назад</a>
 </form>
 </body>
 </html>
