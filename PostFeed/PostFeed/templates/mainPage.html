@@ -9,45 +9,41 @@
     {{ username }}
     <br> <br>
 {% endif %}
-{% for post in context %}
-    <a href="Post/{{ post.id }}">{{ post.name }}</a> <br>
+{% if context == "" %}
+    <h2>Ничего не найдено</h2>
+{% else %}
+    {% for post in context %}
+        <a href="Post/{{ post.id }}">{{ post.name }}</a> <br>
 
-    <p>Автор: {{ post.author }}</p>
-    <p>Дата {{ post.date }}</p>
-    <p>Теги: {{ post.tags }}</p>
+        <p>Автор: {{ post.author }}</p>
+        <p>Дата {{ post.date }}</p>
+        <p>Теги: {{ post.tags }}</p>
 
-    <p>Автор: {{ post.author }}</p>
-    <p>Дата {{ post.date }}</p>
-    <p>Теги: {{ post.tags }}</p>
-
-    {% if username == post.author %}
-        <a href="deletePost/{{ post.id }}">Удалить</a>
-    {% endif %}
-    <hr>
-{% endfor %}
-<br>
-<br>
-{% if authorized == True %}
-    <a href="addPost">Добавить пост</a>
+        {% if username == post.author %}
+            <a href="deletePost/{{ post.id }}">Удалить</a>
+        {% endif %}
+        <hr>
+    {% endfor %}
     <br>
     <br>
 {% endif %}
 
-{% if authorized == True %}
+{% if authorized == True and filtered == False %}
     <a href="addPost">Добавить пост</a>
-    <br>
-    <br>
+    <br><br>
 {% endif %}
 
-<a href="search">Поиск</a><br>
+<a href="/../search">Поиск</a><br>
 
 {% if authorized == False %}
     <a href="authorize">Авторизация</a>
 {% endif %}
-{% if authorized == True %}
-    <a href="signOut">Выйти</a>
+{% if filtered == True %}
+    <br><a href="/../">На главную</a>
 {% endif %}
-
+{% if authorized == True %}
+    <br><a href="signOut">Выйти</a>
+{% endif %}
 </body>
 </html>
 

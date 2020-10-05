@@ -23,9 +23,9 @@ urlpatterns = [
     re_path(r'^[A-Za-z/]*deletePost/(?P<postID>\d+)', views.DeletePost),
     path('addPost/', views.AddPost),
     path('', views.MainPage),
-    path('Post/<int:postID>', views.ShowPost),
+    re_path(r'^[A-Za-z/]*Post/(?P<postID>\d+)', views.ShowPost),
     path('authorize/', views.Authorize),
-    path('signOut', views.SignOut),
+    re_path('signOut$', views.SignOut),
     path('search/', views.Search)
     # re_path(r'^main', views.)
 ]

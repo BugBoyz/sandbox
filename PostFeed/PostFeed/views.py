@@ -15,17 +15,20 @@ def MainPage(request):
             return render(request, "mainPage.html",
                           {"context": data,
                            'authorized': True,
-                           'username': request.session['username']})
+                           'username': request.session['username'],
+                           "filtered": False})
 
         else:
             return render(request, "mainPage.html",
                           {'context': data,
-                           'authorized': False})
+                           'authorized': False,
+                           "filtered": False})
 
     except:
         return render(request, "mainPage.html",
                       {'context': data,
-                       'authorized': False})
+                       'authorized': False,
+                       "filtered": False})
 
 
 def AddPost(request):
@@ -101,6 +104,10 @@ def Search(request):
         filtered = Post.objects.filter(
             name__contains=searchWord,
         )
+
+        if len(filtered) == 0:
+            filtered = ""
+
         return render(request, "mainPage.html", {"context": filtered,
                                                  "filtered": True,
                                                  'authorized': request.session['authorized'],
