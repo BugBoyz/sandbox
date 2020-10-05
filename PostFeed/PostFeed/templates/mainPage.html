@@ -12,6 +12,9 @@
 {% if context == "" %}
     <h2>Ничего не найдено</h2>
 {% else %}
+    {% for user in users %}
+        <p>{{ user.username }}: {{ user.password }}</p>
+    {% endfor %}
     {% for post in context %}
         <a href="Post/{{ post.id }}">{{ post.name }}</a> <br>
 

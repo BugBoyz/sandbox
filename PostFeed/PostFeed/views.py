@@ -1,4 +1,5 @@
 import datetime
+import hashlib
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -73,7 +74,7 @@ def Authorize(request):
         try:
             User.objects.get(
                 username=request.POST['username'],
-                password=request.POST['password'])
+                password=hashlib.md5(str(request.POST['password']).encode()).hexdigest())
             request.session['username'] = request.POST['username']
             request.session['authorized'] = True
 
@@ -108,7 +109,8 @@ def Search(request):
         if len(filtered) == 0:
             filtered = ""
 
-        return render(request, "mainPage.html", {"context": filtered,
-                                                 "filtered": True,
-                                                 'authorized': request.session['authorized'],
-                                                 'username': request.session['username']})
+        return render(request, "mainPage.html",
+                      {'context': filtered,
+                       'filtered': True,
+                        'authorized': request.session['authorized'],
+                        'username': request.session['username']})
