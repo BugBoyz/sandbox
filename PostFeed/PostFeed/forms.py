@@ -10,11 +10,8 @@ class PostForm(forms.Form):
 class AuthForm(forms.Form):
     username = forms.CharField(max_length=15)
     password = forms.CharField(max_length=15, widget=forms.PasswordInput)
-<<<<<<< HEAD
-=======
 
 
 class SearchString(forms.Form):
     searchCategory = forms.ChoiceField(choices=((1, "По названию"), (2, "По тегу"), (3, "По автору")), label='')
     searchWord = forms.CharField(max_length=20, label='')
->>>>>>> dev
