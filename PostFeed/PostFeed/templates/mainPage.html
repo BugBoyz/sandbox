@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% if authorized == True %}
+    {{ username }}
+    <br> <br>
+{% endif %}
+{% for post in context %}
+    <a href="Post/{{ post.id }}">{{ post.name }}</a> <br>
+    <p>Автор: {{ post.author }}</p>
+    <p>Дата {{ post.date }}</p>
+    <p>Теги: {{ post.tags }}</p>
+    {% if username == post.author %}
+        <a href="deletePost/{{ post.id }}">Удалить</a>
+    {% endif %}
+    <hr>
+{% endfor %}
+<br>
+<br>
+{% if authorized == True %}
+    <a href="addPost">Добавить пост</a>
+    <br>
+    <br>
+{% endif %}
+
+<a href="search">Поиск</a><br>
+{% if authorized == False %}
+    <a href="authorize">Авторизация</a>
+{% endif %}
+{% if authorized == True %}
+    <a href="signOut">Выйти</a>
+{% endif %}
+{% if filtered == True %}
+    <br><a href="/../">На главную</a>
+{% endif %}
+</body>
+</html>
+</body>
+</html>
