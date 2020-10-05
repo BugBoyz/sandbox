@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-from django.shortcuts import render, redirect
-from PostFeed.models import Post, User
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponseNotFound
-import datetime
-from .forms import PostForm, AuthForm
-=======
 import datetime
 
 from django.http import HttpResponse
@@ -13,26 +5,12 @@ from django.shortcuts import render, redirect
 
 from PostFeed.models import Post, User
 from .forms import PostForm, AuthForm, SearchString
->>>>>>> dev
 
 
 def MainPage(request):
     data = Post.objects.all()
 
     try:
-<<<<<<< HEAD
-
-        if request.session['authorized'] == True:
-            return render(request, "mainPage.html",
-                        {"context": data,
-                        'authorized': True,
-                        'username': request.session['username']})
-
-        else:
-            return render(request, "mainPage.html",
-                        {'context': data,
-                        'authorized': False})
-=======
         if request.session['authorized'] == True:
             return render(request, "mainPage.html",
                           {"context": data,
@@ -43,7 +21,6 @@ def MainPage(request):
             return render(request, "mainPage.html",
                           {'context': data,
                            'authorized': False})
->>>>>>> dev
 
     except:
         return render(request, "mainPage.html",
@@ -52,10 +29,6 @@ def MainPage(request):
 
 
 def AddPost(request):
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
     if request.session['authorized'] == True:
         if request.method == 'GET':
             form = PostForm()
@@ -72,14 +45,7 @@ def AddPost(request):
 
             return redirect('/../')
     else:
-<<<<<<< HEAD
-        return HttpResponseNotFound()
-
-
-
-=======
         return HttpResponse("<h1 align=\"center\">А хуй тебе, гнида хитрожопая!</h1>")
->>>>>>> dev
 
 
 def DeletePost(request, postID):
@@ -91,21 +57,14 @@ def DeletePost(request, postID):
 def ShowPost(request, postID):
     post = Post.objects.get(id=postID)
 
-<<<<<<< HEAD
-    return render(request, "ShowPost.html", {"post":post})
-=======
     return render(request, "ShowPost.html", {"post": post})
->>>>>>> dev
 
 
 def Authorize(request):
     if request.method == 'GET':
         form = AuthForm()
-<<<<<<< HEAD
-        return render(request, "Auth.html", {"form":form, "exception": False})
-=======
+
         return render(request, "Auth.html", {"form": form, "exception": False})
->>>>>>> dev
 
     elif request.method == 'POST':
         try:
@@ -126,9 +85,6 @@ def SignOut(request):
     request.session['authorized'] = False
     request.session['username'] = ''
 
-<<<<<<< HEAD
-    return redirect('/../')
-=======
     return redirect('/../')
 
 
@@ -149,4 +105,3 @@ def Search(request):
                                                  "filtered": True,
                                                  'authorized': request.session['authorized'],
                                                  'username': request.session['username']})
->>>>>>> dev
