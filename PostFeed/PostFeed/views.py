@@ -61,7 +61,17 @@ def DeletePost(request, postID):
 def ShowPost(request, postID):
     post = Post.objects.get(id=postID)
 
-    return render(request, "ShowPost.html", {"post": post})
+    try:
+        if request.session['authorized'] == True:
+            return render(request, "ShowPost.html", {"post": post,
+                                                     'authorized': True,
+                                                     'username': request.session['username']})
+        else:
+            return render(request, "ShowPost.html", {"post": post,
+                                                     'authorized': False})
+    except:
+        return render(request, "ShowPost.html", {"post": post,
+                                                 'authorized': False})
 
 
 def Authorize(request):
@@ -102,15 +112,24 @@ def Search(request):
         searchCategory = request.POST["searchCategory"]
         searchWord = request.POST["searchWord"]
 
-        filtered = Post.objects.filter(
-            name__contains=searchWord,
-        )
+        if searchCategory == "1":
+            filtered = Post.objects.filter(
+                name__contains=searchWord,
+            )
+        elif searchCategory == "2":
+            filtered = Post.objects.filter(
+                tags__contains=searchWord,
+            )
+        else:
+            filtered = Post.objects.filter(
+                author__contains=searchWord,
+            )
 
-        if len(filtered) == 0:
+        if len(filtered) == 0 or filtered is None:
             filtered = ""
 
         return render(request, "mainPage.html",
                       {'context': filtered,
                        'filtered': True,
-                        'authorized': request.session['authorized'],
-                        'username': request.session['username']})
+                       'authorized': request.session['authorized'],
+                       'username': request.session['username']})
