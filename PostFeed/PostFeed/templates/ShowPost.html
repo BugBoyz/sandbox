@@ -10,8 +10,13 @@
 <p>{{ post.text }}</p>
 
 <p>by {{ post.author }}, {{ post.date }}</p>
- Тэги - {{ post.tags }}
+Тэги - {{ post.tags }}
 <br><br>
 <a href="/../">Назад</a>
+{% if authorized == True %}
+    {% if username == post.author %}
+        <br><a href="deletePost/{{ post.id }}">Удалить</a>
+    {% endif %}
+{% endif %}
 </body>
 </html>
