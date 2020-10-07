@@ -99,18 +99,31 @@ def Search(request):
 
     else:
 
-        searchCategory = request.POST["searchCategory"]
         searchWord = request.POST["searchWord"]
 
-        filtered = Post.objects.filter(
+        filtered_name = Post.objects.filter(
             name__contains=searchWord,
         )
 
-        if len(filtered) == 0:
-            filtered = ""
+        filtered_author = Post.objects.filter(
+            author__contains=searchWord
+        )
+
+        filtered_tags = Post.objects.filter(
+            tags__contains=searchWord
+        )
+
+        context = filtered_name.union(
+            filtered_author.union(
+                filtered_tags
+            )
+        )
+
+        if len(context) == 0:
+            context = ""
 
         return render(request, "mainPage.html",
-                      {'context': filtered,
+                      {'context': context,
                        'filtered': True,
                         'authorized': request.session['authorized'],
                         'username': request.session['username']})

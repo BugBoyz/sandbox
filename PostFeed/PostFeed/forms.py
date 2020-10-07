@@ -13,5 +13,4 @@ class AuthForm(forms.Form):
 
 
 class SearchString(forms.Form):
-    searchCategory = forms.ChoiceField(choices=((1, "По названию"), (2, "По тегу"), (3, "По автору")), label='')
     searchWord = forms.CharField(max_length=20, label='')
