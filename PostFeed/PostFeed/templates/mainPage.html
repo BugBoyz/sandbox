@@ -9,6 +9,14 @@
     {{ username }}
     <br> <br>
 {% endif %}
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <input type="submit" value="Найти">
+    <br> <br>
+</form>
 {% if context == "" %}
     <h2>Ничего не найдено</h2>
 {% else %}
@@ -36,7 +44,7 @@
     <br><br>
 {% endif %}
 
-<a href="/../search">Поиск</a><br>
+<!--<a href="/../search">Поиск</a><br>-->
 
 {% if authorized == False %}
     <a href="authorize">Авторизация</a>
