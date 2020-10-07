@@ -9,7 +9,6 @@ from .forms import PostForm, AuthForm, SearchString
 
 
 def MainPage(request):
-    data = Post.objects.all()
 
     if request.method == "POST":
         searchWord = request.POST["searchWord"]
@@ -43,6 +42,7 @@ def MainPage(request):
                        "form": SearchString()})
 
     try:
+        data = Post.objects.all()
         if request.session['authorized'] == True:
             return render(request, "mainPage.html",
                           {"context": data,
@@ -59,6 +59,7 @@ def MainPage(request):
                            "form": SearchString()})
 
     except:
+        data = Post.objects.all()
         return render(request, "mainPage.html",
                       {'context': data,
                        'authorized': False,
@@ -145,38 +146,4 @@ def SignOut(request):
 
     return redirect('/../')
 
-# def Search(request):
-#     if request.method == 'GET':
-#         form = SearchString()
-#         return render(request, "searchPage.html", {"form": form, "filtered": False})
-#
-#     else:
-#
-#         searchWord = request.POST["searchWord"]
-#
-#         filtered_name = Post.objects.filter(
-#             name__contains=searchWord,
-#         )
-#
-#         filtered_author = Post.objects.filter(
-#             author__contains=searchWord
-#         )
-#
-#         filtered_tags = Post.objects.filter(
-#             tags__contains=searchWord
-#         )
-#
-#         context = filtered_name.union(
-#             filtered_author.union(
-#                 filtered_tags
-#             )
-#         )
-#
-#         if len(context) == 0 or context is None:
-#             context = ""
-#
-#         return render(request, "mainPage.html",
-#                       {'context': context,
-#                        'filtered': True,
-#                        'authorized': request.session['authorized'],
-#                        'username': request.session['username']})
+

@@ -25,6 +25,5 @@ urlpatterns = [
     re_path(r'^[A-Za-z/]*Post/(?P<postID>\d+)', views.ShowPost),
     path('authorize/', views.Authorize),
     re_path('signOut$', views.SignOut),
-    # path('search/', views.Search)
-    # re_path(r'^main', views.)
+
 ]
